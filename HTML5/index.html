@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <title>FISH FEEDER</title>
+    <script src="https://netpie.io/microgear.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="jquery.knob.js"></script>
+    <script>
+
+    var appid, appkey, appsecret;
+        var args = location.search.substring(1).split('&');
+        for (var i=0;i<args.length;i++) {
+            var a = args[i].split('=');
+            if (a[0] == 'arg') {
+                var b = a[1].split(':');
+                appid = b[0];
+                appkey = b[1];
+                appsecret = b[2];
+            }
+        }
+        
+        var microgear = Microgear.create({
+            key: appkey,
+            secret: appsecret,
+            alias : "feederapp"
+        });
+
+        microgear.on('message',function(topic,msg) {
+            var foodcounter = document.getElementById("foodcounter");
+            foodcounter.innerHTML= msg;
+            foodcounter.style['margin-left'] = (-18*msg.length)+'px';
+            console.log(msg);
+        });
+
+        microgear.on('connected', function() {
+            var foodcounter = document.getElementById("foodcounter");
+            foodcounter.style.color="#008800";
+
+            microgear.subscribe("/foodcount");
+            microgear.chat("fishfeeder","hi");
+        });
+
+        microgear.connect(appid);
+
+        $(function() {
+            $("input.infinite").knob({
+                min : 0
+                , max : 20
+                , stopper : true
+                , change : function (value) {
+                    var rotation = Math.floor(value);
+                        if(rotation==19){
+                        microgear.chat("fishfeeder","start");
+                    }
+                }
+                ,release : function (value) {
+                    microgear.chat("fishfeeder","stop");
+                    console.log("release");
+                }
+            });
+        });
+    </script>
+</head>
+<body class='layout-document' bgcolor="#A0A0A0 ">
+        <div class="outer" align="center">
+            <div style="top:50%;left:50%;position:absolute;font-size:70px;color:#6E6D6D;z-index:1;margin-top:-36px;margin-left:-18px;" id="foodcounter">0</div>
+            <div style="top:50%;left:50%;position:absolute;z-index:2;margin-top:-150px;margin-left:-150px">
+                <input class="infinite" data-width="300" data-height="300" data-thickness=".4" data-displayInput="false" data-cursor=true value="0" id="knob">
+            </div
+        </div>
+</body>
+</html>

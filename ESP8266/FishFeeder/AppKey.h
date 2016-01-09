@@ -1,0 +1,5 @@
+
+#define APPID   <NETPIE_APPID>
+#define KEY     <NETPIE_APPKEY>
+#define SECRET  <NETPIE_APPSECRET>
+
