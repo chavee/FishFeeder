@@ -12,7 +12,7 @@ An IOT fish feeder powered by NETPIE platform
  - Arduino Core for ESP8266 https://github.com/esp8266/Arduino
  - Microgear-esp8266-arduino https://github.com/netpieio/microgear-esp8266-arduino
  - WiFiManager https://github.com/tzapu/WiFiManager.git
- - ESP8266-OLED-SSD1306 https://github.com/squix78/esp8266-oled-ssd130
+ - ESP8266-OLED-SSD1306 https://github.com/squix78/esp8266-oled-ssd1306
 
 ####HTML5
 - Open HTML5/index.html directly with any web browsers (except IE) passing a URL argument like this
