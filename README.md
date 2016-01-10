@@ -8,7 +8,11 @@ An IOT fish feeder powered by NETPIE platform
 
 ####ESP8266
 - Edit the file ESP8266/FishFeeder/AppKey.h with the above AppID, AppKey and AppSecret
-- Build with Arduino IDE with ESP8266 SDK
+- Before building with an Arduino IDE, make sure you have these dependencies installed
+ - Arduino Core for ESP8266 https://github.com/esp8266/Arduino
+ - Microgear-esp8266-arduino https://github.com/netpieio/microgear-esp8266-arduino
+ - WiFiManager https://github.com/tzapu/WiFiManager.git
+ - ESP8266-OLED-SSD1306 https://github.com/squix78/esp8266-oled-ssd130
 
 ####HTML5
 - Open HTML5/index.html directly with any web browsers (except IE) passing a URL argument like this
