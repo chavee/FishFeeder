@@ -7,15 +7,14 @@
     <script>
 
     var appid, appkey, appsecret;
-        var args = location.search.substring(1).split('&');
-        for (var i=0;i<args.length;i++) {
-            var a = args[i].split('=');
-            if (a[0] == 'arg') {
-                var b = a[1].split(':');
-                appid = b[0];
-                appkey = b[1];
-                appsecret = b[2];
-            }
+        var a = location.hash.substring(1).split(':');
+        if (a.length==3) {
+            appid = a[0];
+            appkey = a[1];
+            appsecret = a[2];
+        }
+        else {
+            alert("Please parse appid, appkey and appsecret as a hash e.g. :\n\n"+location+"#APPID:APPKEY:APPSECRET");            
         }
         
         var microgear = Microgear.create({
