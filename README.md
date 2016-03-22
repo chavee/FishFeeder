@@ -1,6 +1,8 @@
 # FishFeeder
 An IOT fish feeder powered by NETPIE platform
 
+![fishfeeder](https://cloud.githubusercontent.com/assets/7685964/13938407/2e1af972-f000-11e5-91a2-4c3cb060126c.jpg)
+
 ###Instruction
 
 - Sign up at https://netpie.io
