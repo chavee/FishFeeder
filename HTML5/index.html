@@ -4,7 +4,7 @@
     <script src="https://netpie.io/microgear.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="jquery.knob.js"></script>
-    <script>
+	<script type="text/javascript">
 
     var appid, appkey, appsecret;
         var a = location.hash.substring(1).split(':');
@@ -58,13 +58,43 @@
             });
         });
     </script>
+	<style>
+		#knobDiv{
+			position:absolute;
+			z-index:2;
+			top:50%;
+			left:50%;
+		}
+
+		#foodcounter{
+			top:50%;
+			left:50%;
+			position:absolute;
+			color:#6E6D6D;
+			z-index:1;
+		}
+	</style>
 </head>
 <body class='layout-document' bgcolor="#A0A0A0 ">
-        <div class="outer" align="center">
-            <div style="top:50%;left:50%;position:absolute;font-size:70px;color:#6E6D6D;z-index:1;margin-top:-36px;margin-left:-18px;" id="foodcounter">0</div>
-            <div style="top:50%;left:50%;position:absolute;z-index:2;margin-top:-150px;margin-left:-150px">
-                <input class="infinite" data-width="300" data-height="300" data-thickness=".4" data-displayInput="false" data-cursor=true value="0" id="knob">
+		<div style="" id="foodcounter">0</div>
+		<div class="outer" align="center">
+            <div id="knobDiv">
+                <input class="infinite" data-thickness=".4" data-displayInput="false" data-cursor=true value="0" id="knob">
             </div
         </div>
 </body>
 </html>
+
+<script>
+	var w = window.innerWidth;
+	var h = window.innerHeight;
+	document.getElementById('knobDiv').style.height = (h-40)+'px';
+	document.getElementById('knobDiv').style.width = (w-40)+'px';
+	document.getElementById('knobDiv').style.marginTop = "-"+Math.floor((h/2)-20)+'px';
+	document.getElementById('knobDiv').style.marginLeft = "-"+Math.floor((w/2)-20)+'px';
+
+	if(w>h) document.getElementById('foodcounter').style.fontSize = Math.floor(h/5)+"px";
+	else document.getElementById('foodcounter').style.fontSize = Math.floor(w/5)+"px";
+	document.getElementById('foodcounter').style.marginTop = "-"+Math.floor((document.getElementById('foodcounter').style.fontSize).replace("px","")/2)+'px';
+	document.getElementById('foodcounter').style.marginLeft = "-"+Math.floor((document.getElementById('foodcounter').style.fontSize).replace("px","")/4)+'px';
+</script>

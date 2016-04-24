@@ -35,6 +35,21 @@
         max = Math.max,
         min = Math.min;
 
+	/*
+	** change size knob - by Anun
+	*/
+	var w = window.innerWidth;
+	var h = window.innerHeight;
+	var knobSize = 200;
+	if(w>h){
+		knobSize=h-40;
+	}else{
+		knobSize=w-40;
+	}
+	/*
+	** end change size knob
+	*/
+
     k.c = {};
     k.c.d = $(document);
     k.c.t = function (e) {
@@ -109,8 +124,8 @@
                                && Math.max(Math.min(this.$.data('thickness'), 1), 0.01)
                                || 0.35,
                     lineCap: this.$.data('linecap') || 'butt',
-                    width: this.$.data('width') || 200,
-                    height: this.$.data('height') || 200,
+                    width: this.$.data('width') || knobSize,
+                    height: this.$.data('height') || knobSize,
                     displayInput: this.$.data('displayinput') == null || this.$.data('displayinput'),
                     displayPrevious: this.$.data('displayprevious'),
                     fgColor: this.$.data('fgcolor') || '#87CEEB',
