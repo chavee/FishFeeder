@@ -38,7 +38,7 @@
             microgear.chat("fishfeeder","hi");
         });
 
-        microgear.connect(appid);
+        //microgear.connect(appid);
 
         $(function() {
             $("input.infinite").knob({
@@ -87,10 +87,16 @@
 
 <script>
 	var w = window.innerWidth;
-	var h = window.innerHeight;
+    var h = window.innerHeight;
+    var knobSize = 200;
+    if(w>h){
+        knobSize=h-40;
+    }else{
+        knobSize=w-40;
+    }
 	document.getElementById('knobDiv').style.height = (h-40)+'px';
 	document.getElementById('knobDiv').style.width = (w-40)+'px';
-	document.getElementById('knobDiv').style.marginTop = "-"+Math.floor((h/2)-20)+'px';
+	document.getElementById('knobDiv').style.marginTop = "-"+(knobSize/2)+'px';
 	document.getElementById('knobDiv').style.marginLeft = "-"+Math.floor((w/2)-20)+'px';
 
 	if(w>h) document.getElementById('foodcounter').style.fontSize = Math.floor(h/5)+"px";
